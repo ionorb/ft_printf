@@ -6,10 +6,10 @@
 /*   By: yridgway <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:18:43 by yridgway          #+#    #+#             */
-/*   Updated: 2022/05/24 17:39:33 by yridgway         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:58:34 by yridgway         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_strlen(char *str)
 {
@@ -48,13 +48,15 @@ int	ft_writeint(long long arg, int c)
 		wordcount += write(1, "%", 1);
 	else if (c == 'p')
 	{
-		write(1, "0x", 2);
+		if (arg == 0)
+			return (wordcount += write(1, "(nil)", 5));
+		wordcount += write(1, "0x", 2);
 		wordcount += ft_puthex(arg , 0);
 	}
 	return (wordcount);
 }
 
-int	ft_printf(char *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	int		i;
 	int		wordcount;

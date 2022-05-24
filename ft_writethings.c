@@ -6,10 +6,10 @@
 /*   By: yridgway <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:34:35 by yridgway          #+#    #+#             */
-/*   Updated: 2022/05/24 17:36:43 by yridgway         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:34:29 by yridgway         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_convert(unsigned long dec, int isupper)
 {
@@ -35,7 +35,10 @@ int	ft_puthex(unsigned long dec, int isupper)
 
 	count = 0;
 	if (dec == 0)
+	{
 		write(1, "0", 1);
+		count++;
+	}
 	ft_convert(dec, isupper);
 	while (dec > 0)
 	{
@@ -50,6 +53,8 @@ int	ft_putstr(char	*str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	write(1, str, i);
@@ -64,6 +69,7 @@ int	ft_putnum(int n)
 	num = ft_itoa_long(n);
 	count = ft_strlen(num);
 	write(1, num, count);
+	free(num);
 	return (count);
 }
 
@@ -75,5 +81,6 @@ int	ft_putnum_unsig(unsigned int n)
 	num = ft_itoa_long(n);
 	count = ft_strlen(num);
 	write(1, num, count);
+	free(num);
 	return (count);
 }
