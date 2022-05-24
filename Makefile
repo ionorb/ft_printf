@@ -1,10 +1,10 @@
 NAME		=	libftprintf.a
 
-SRCS		=	
+SRCS		=	ft_itoa_long.c ft_printf.c ft_writethings.c
 
 OBJS		=	$(SRCS:.c=.o)
 
-CC		=	gcc
+CC			=	gcc
 
 CCFLAGS 	=	-Wall -Wextra -Werror
 
