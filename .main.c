@@ -6,7 +6,7 @@
 /*   By: yridgway <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 12:40:30 by yridgway          #+#    #+#             */
-/*   Updated: 2022/05/24 18:58:12 by yridgway         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:17:54 by yridgway         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -16,7 +16,8 @@ int	main()
 //	char	*p;
 
 //	p = "hello";
-	printf("\nprintf:\t\t[%d]\n", printf(" %p %p ", NULL, NULL));
-	printf("\nft_printf:\t[%d]\n\n", ft_printf(" %p %p ", 0, 0));
+//	printf("[%d]", ft_printf("%%%c%%",'A', 'A'));
+    printf("[%d]", ft_printf("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+//  ft_printf("%c", 'r' + (256*10));
 	return (0);
 }

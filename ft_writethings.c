@@ -6,7 +6,7 @@
 /*   By: yridgway <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 17:34:35 by yridgway          #+#    #+#             */
-/*   Updated: 2022/05/24 18:34:29 by yridgway         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:18:23 by yridgway         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -54,7 +54,7 @@ int	ft_putstr(char	*str)
 
 	i = 0;
 	if (!str)
-		return (0);
+		return (write(1, "(null)", 6));
 	while (str[i])
 		i++;
 	write(1, str, i);

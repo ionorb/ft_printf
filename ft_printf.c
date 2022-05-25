@@ -6,7 +6,7 @@
 /*   By: yridgway <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 18:18:43 by yridgway          #+#    #+#             */
-/*   Updated: 2022/05/24 18:58:34 by yridgway         ###   ########.fr       */
+/*   Updated: 2022/05/25 18:05:54 by yridgway         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -24,7 +24,7 @@ int	ft_strlen(char *str)
 int	ft_isint(int c)
 {
 	if (c == 'c' || c == 'd' || c == 'u' || c == 'p'
-		|| c == 'i' || c == 'x' || c == 'X' || c == '%')
+		|| c == 'i' || c == 'x' || c == 'X')
 		return (1);
 	return (0);
 }
@@ -44,8 +44,6 @@ int	ft_writeint(long long arg, int c)
 		wordcount += ft_puthex((unsigned int)arg, 0);
 	else if (c == 'X')
 		wordcount += ft_puthex((unsigned int)arg, 1);
-	else if (c == '%')
-		wordcount += write(1, "%", 1);
 	else if (c == 'p')
 	{
 		if (arg == 0)
@@ -74,6 +72,8 @@ int	ft_printf(const char *input, ...)
 				wordcount += ft_writeint(va_arg(args, long long), input[i]);
 			else if (input[i] == 's')
 				wordcount += ft_putstr(va_arg(args, char *));
+            else if (input[i] == '%')
+                wordcount += write(1, "%", 1);
 			else
 				printf(" ***dat aint right!***");
 		}
